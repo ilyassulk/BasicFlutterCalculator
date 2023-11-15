@@ -6,25 +6,27 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/repositories/crypto_coins/calculator_allrep.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_calculator/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    /* // Build our app and trigger a frame.
-    await tester.pumpWidget(const CalculatorApp());
+  CalculatorRepository repository = CalculatorRepository();
+  test('CalcExprTest', () async {
+    //INIT
+    String testExpr1 = "2+2*2+2";
+    String testExpr2 = "9**9";
+    String testExpr3 = "2.0";
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    //ACT
+    final testAns1 = await repository.calcExpr(testExpr1);
+    final testAns2 = await repository.calcExpr(testExpr2);
+    final testAns3 = await repository.calcExpr(testExpr3);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget); */
+    //ASSERT
+    assert(testAns1 == "8.0");
+    assert(testAns2 == "Error");
+    assert(testAns3 == "2.0");
   });
 }

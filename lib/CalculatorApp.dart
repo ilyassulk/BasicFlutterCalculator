@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/screens/main_screen/view/main_screen.dart';
-import 'package:flutter_calculator/theme/theme.dart';
 
 class CalculatorApp extends StatelessWidget {
   const CalculatorApp({super.key});
@@ -14,7 +13,6 @@ class CalculatorApp extends StatelessWidget {
         '/': (context) => MainCalcScreen(),
       },
       initialRoute: '/',
-      theme: darkTheme,
     );
   }
 }
