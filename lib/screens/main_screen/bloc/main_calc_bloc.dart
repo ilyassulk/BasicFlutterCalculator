@@ -37,9 +37,12 @@ class MainCalcBloc extends Bloc<MainCalcEvent, MainCalcState> {
   ) async {
     String res = event.nowExpr;
     if (event.operation == 'c') {
-      res = '';
+      res = '0';
     } else {
       res += event.operation;
+      if (res[0] == '0') {
+        res = res.replaceFirst('0', '');
+      }
     }
     emit(MainCalcGetExpr(initExpr: res));
   }

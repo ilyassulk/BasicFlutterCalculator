@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_calculator/screens/main_screen/bloc/main_calc_bloc.dart';
+import 'package:flutter_calculator/styles/styles.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_calculator/repositories/crypto_coins/calculator_allrep.dart';
 
@@ -28,8 +28,13 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
     }
 
     return Scaffold(
+      backgroundColor: colorBlack,
       appBar: AppBar(
-        title: Text("Flutter Calculator"),
+        backgroundColor: colorBlack,
+        title: Text(
+          "Flutter Calculator",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: BlocBuilder<MainCalcBloc, MainCalcState>(
@@ -49,7 +54,7 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
                       child: Text(
                         state.initExpr,
                         style: TextStyle(
-                            color: const Color.fromARGB(255, 250, 49, 49),
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontSize: 34),
                       )),
                 ),
@@ -61,118 +66,116 @@ class _MainCalcScreenState extends State<MainCalcScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            IconButton(
-                              onPressed: () => _mainCalcBloc
-                                  .add(MainCalcClickButtonOperation(
-                                operation: '1',
-                                nowExpr: state.initExpr,
-                              )),
-                              icon: Text("1"),
-                            ),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                            getButtonNumbers(
+                                text: "1",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '2',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("2")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "1",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "2",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '3',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("3")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "2",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "3",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '+',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("+")),
+                                        operation: "3",
+                                        nowExpr: state.initExpr))),
+                            getButtonOperation(
+                                text: "+",
+                                onTap: () => _mainCalcBloc.add(
+                                    MainCalcClickButtonOperation(
+                                        operation: "+",
+                                        nowExpr: state.initExpr)))
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                            getButtonNumbers(
+                                text: "4",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '4',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("4")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "4",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "5",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '5',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("5")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "5",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "6",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '6',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("6")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "6",
+                                        nowExpr: state.initExpr))),
+                            getButtonOperation(
+                                text: "-",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '-',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("-")),
+                                        operation: "-",
+                                        nowExpr: state.initExpr)))
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                            getButtonNumbers(
+                                text: "7",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '7',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("7")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "7",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "8",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '8',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("8")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "8",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "9",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '9',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("9")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "9",
+                                        nowExpr: state.initExpr))),
+                            getButtonOperation(
+                                text: "*",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '*',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("*")),
+                                        operation: "*",
+                                        nowExpr: state.initExpr)))
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                            getButtonOperation(
+                                text: "C",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: 'c',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("C")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "c",
+                                        nowExpr: state.initExpr))),
+                            getButtonNumbers(
+                                text: "0",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '0',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("0")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        operation: "0",
+                                        nowExpr: state.initExpr))),
+                            getButtonOperation(
+                                text: "=",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcGetResult(
-                                        exprToCalc: state.initExpr)),
-                                icon: Text("=")),
-                            IconButton(
-                                onPressed: () => _mainCalcBloc.add(
+                                        exprToCalc: state.initExpr))),
+                            getButtonOperation(
+                                text: "/",
+                                onTap: () => _mainCalcBloc.add(
                                     MainCalcClickButtonOperation(
-                                        operation: '/',
-                                        nowExpr: state.initExpr)),
-                                icon: Text("/")),
+                                        operation: "/",
+                                        nowExpr: state.initExpr))),
                           ],
                         ),
                       ]),
